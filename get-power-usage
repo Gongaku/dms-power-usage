@@ -1,9 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 power_supply_root="/sys/class/power_supply"
 total_microwatts=0
 battery_found=false
 has_reading=false
+bat_info_path="/sys/class/power_supply"
+bat_info_path="$(find "$bat_info_path" -name "BAT*" | head -n 1)"
 
 # Sum power usage across all detected batteries (BAT0, BAT1, ...)
 for bat_path in "${power_supply_root}"/BAT*; do
