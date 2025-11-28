@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-bat_info_path="/sys/class/power_supply/BAT0"
+bat_info_path="/sys/class/power_supply"
+bat_info_path="$(find "$bat_info_path" -name "BAT*" | head -n 1)"
 
 # Check if the direct power reading is available
 if [ -f "${bat_info_path}/power_now" ]; then
